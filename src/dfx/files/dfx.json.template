@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "canisters": {
+    "<%= project_name %>": {
+      "frontend": {},
+      "main": "src/<%= project_name %>/main.mo"
+    }
+  },
+  "defaults": {
+    "build": {
+      "output": "canisters/"
+    },
+    "start": {
+      "port": 8000,
+      "address": "127.0.0.1",
+      "serve_root": "canisters/{project_name}/assets"
+    }
+  }
+}
