@@ -39,7 +39,11 @@ canisters/
         const packageJson = (tree.read("/package.json") || "").toString();
         const json = JSON.parse(packageJson);
 
-        json["scripts"]["build"] = "mkdir -p canisters/hello/assets; ng build --prod && cat dist/dfx-demo/index.html | grep -oE '[a-z0-9.-]*.js' | grep 2015 | sed s%^%dist/dfx-demo/% | xargs cat > canisters/hello/assets/index.js";
+        json["scripts"]["build"] = `mkdir -p canisters/${options.projectName}/assets; `
+                                 + `ng build --prod && cat dist/dfx-demo/index.html `
+                                 + `| grep -oE '[a-z0-9.-]*.js' | grep 2015 `
+                                 + `| sed s%^%dist/dfx-demo/% `
+                                 + `| xargs cat > canisters/${options.projectName}/assets/index.js`;
         tree.overwrite("/package.json", JSON.stringify(json));
       }
     ]);
